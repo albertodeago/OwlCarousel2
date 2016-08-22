@@ -188,6 +188,7 @@
 		touchDrag: true,
 		pullDrag: true,
 		freeDrag: false,
+		enableDrag: function(){return true;},
 
 		margin: 0,
 		stagePadding: 0,
@@ -698,7 +699,7 @@
 	Owl.prototype.onDragStart = function(event) {
 		var stage = null;
 
-		if (event.which === 3) {
+		if (event.which === 3 || this.options.enableDrag() == false) {
 			return;
 		}
 
