@@ -225,7 +225,8 @@
 		itemClass: 'owl-item',
 		stageClass: 'owl-stage',
 		stageOuterClass: 'owl-stage-outer',
-		grabClass: 'owl-grab'
+		grabClass: 'owl-grab',
+		ignoreClass: 'owl-avoid-clone'
 	};
 
 	/**
@@ -339,8 +340,14 @@
 
 			this._clones = clones;
 
-			$(append).addClass('cloned').appendTo(this.$stage);
-			$(prepend).addClass('cloned').prependTo(this.$stage);
+			var $append = $(append);
+			var $prepend = $(prepend);
+			//Sanitize Clone Element:
+			$append.find("." + this.settings.ignoreClass).detach();
+			$prepend.find("." + this.settings.ignoreClass).detach();
+			//Add Class
+			$append.addClass('cloned').appendTo(this.$stage);
+			$prepend.addClass('cloned').prependTo(this.$stage);
 		}
 	}, {
 		filter: [ 'width', 'items', 'settings' ],
