@@ -226,7 +226,8 @@
 		stageClass: 'owl-stage',
 		stageOuterClass: 'owl-stage-outer',
 		grabClass: 'owl-grab',
-		ignoreClass: 'owl-avoid-clone'
+		ignoreClass: 'owl-avoid-clone',
+		pinchLocker: {lock: function(){return true;}, unlock: function(){return true;}}
 	};
 
 	/**
@@ -773,7 +774,7 @@
 			delta = this.difference(this._drag.pointer, this.pointer(event)),
 			stage = this.difference(this._drag.stage.start, delta);
 
-		if (!this.is('dragging')) {
+		if (!this.is('dragging') || !this.settings.pinchLocker.lock(this)) {
 			return;
 		}
 
@@ -810,7 +811,10 @@
 		$(document).off('.owl.core');
 
 		this.$element.removeClass(this.options.grabClass);
-
+		if(!this.settings.pinchLocker.lock(this)){
+			return;
+		}
+		this.settings.pinchLocker.unlock(this);
 		if (delta.x !== 0 && this.is('dragging') || !this.is('valid')) {
 			this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed);
 			this.current(this.closest(stage.x, delta.x !== 0 ? direction : this._drag.direction));
