@@ -188,6 +188,7 @@
 		touchDrag: true,
 		pullDrag: true,
 		freeDrag: false,
+		enableDrag: function(){return true;},
 
 		margin: 0,
 		stagePadding: 0,
@@ -214,7 +215,7 @@
 		nestedItemSelector: false,
 		itemElement: 'div',
 		stageElement: 'div',
-
+		
 		refreshClass: 'th-refresh',
 		loadedClass: 'th-loaded',
 		loadingClass: 'th-loading',
@@ -224,7 +225,10 @@
 		itemClass: 'th-item',
 		stageClass: 'th-stage',
 		stageOuterClass: 'th-stage-outer',
-		grabClass: 'th-grab'
+		grabClass: 'th-grab',
+		ignoreClass: 'owl-avoid-clone',
+		pinchLocker: {lock: function(){return true;}, unlock: function(){return true;}}
+
 	};
 
 	/**
@@ -340,8 +344,14 @@
 
 			this._clones = clones;
 
-			$(append).addClass('cloned').appendTo(this.$stage);
-			$(prepend).addClass('cloned').prependTo(this.$stage);
+			var $append = $(append);
+			var $prepend = $(prepend);
+			//Sanitize Clone Element:
+			$append.find("." + this.settings.ignoreClass).detach();
+			$prepend.find("." + this.settings.ignoreClass).detach();
+			//Add Class
+			$append.addClass('cloned').appendTo(this.$stage);
+			$prepend.addClass('cloned').prependTo(this.$stage);
 		}
 	}, {
 		filter: [ 'width', 'items', 'settings' ],
@@ -701,7 +711,7 @@
 	Owl.prototype.onDragStart = function(event) {
 		var stage = null;
 
-		if (event.which === 3) {
+		if (event.which === 3 || this.options.enableDrag() == false) {
 			return;
 		}
 
@@ -767,7 +777,7 @@
 			delta = this.difference(this._drag.pointer, this.pointer(event)),
 			stage = this.difference(this._drag.stage.start, delta);
 
-		if (!this.is('dragging')) {
+		if (!this.is('dragging') || !this.settings.pinchLocker.lock(this)) {
 			return;
 		}
 
@@ -804,7 +814,10 @@
 		$(document).off('.owl.core');
 
 		this.$element.removeClass(this.options.grabClass);
-
+		if(!this.settings.pinchLocker.lock(this)){
+			return;
+		}
+		this.settings.pinchLocker.unlock(this);
 		if (delta.x !== 0 && this.is('dragging') || !this.is('valid')) {
 			this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed);
 			this.current(this.closest(stage.x, delta.x !== 0 ? direction : this._drag.direction));
@@ -1689,4 +1702,4 @@
 	 */
 	$.fn.owlCarousel.Constructor = Owl;
 
-})(window.Zepto || window.jQuery, window, document);
+})(owlCarousel.$, window, document);
