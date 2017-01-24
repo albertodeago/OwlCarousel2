@@ -82,20 +82,20 @@
 			left = this.core.coordinates(this.previous) - this.core.coordinates(this.next);
 			previous.one($.support.animation.end, clear)
 				.css( { 'left': left + 'px' } )
-				.addClass('animated owl-animated-out')
+				.addClass('animated th-animated-out')
 				.addClass(outgoing);
 		}
 
 		if (incoming) {
 			next.one($.support.animation.end, clear)
-				.addClass('animated owl-animated-in')
+				.addClass('animated th-animated-in')
 				.addClass(incoming);
 		}
 	};
 
 	Animate.prototype.clear = function(e) {
 		$(e.target).css( { 'left': '' } )
-			.removeClass('animated owl-animated-out owl-animated-in')
+			.removeClass('animated th-animated-out th-animated-in')
 			.removeClass(this.core.settings.animateIn)
 			.removeClass(this.core.settings.animateOut);
 		this.core.onTransitionEnd();

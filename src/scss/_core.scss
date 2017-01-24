@@ -1,7 +1,7 @@
 /*
  *  Owl Carousel - Core
  */
-.owl-carousel {
+.th-carousel {
 	display: none;
 	width: 100%;
 	-webkit-tap-highlight-color: transparent;
@@ -9,12 +9,12 @@
 	position: relative;
 	z-index: 1;
 
-	.owl-stage {
+	.th-stage {
 		position: relative;
 		-ms-touch-action: pan-Y;
 	}
 
-	.owl-stage:after {
+	.th-stage:after {
 		content: ".";
 		display: block;
 		clear: both;
@@ -23,15 +23,15 @@
 		height: 0;
 	}
 
-	.owl-stage-outer {
+	.th-stage-outer {
 		position: relative;
 		overflow: hidden;
 		/* fix for flashing background */
 		-webkit-transform: translate3d(0px, 0px, 0px);
 	}
 
-	.owl-wrapper,
-	.owl-item{
+	.th-wrapper,
+	.th-item{
 		-webkit-backface-visibility: hidden;
 		-moz-backface-visibility: hidden;
 		-ms-backface-visibility: hidden;
@@ -40,7 +40,7 @@
 		-ms-transform: translate3d(0,0,0);
 	}
 
-	.owl-item {
+	.th-item {
 		position: relative;
 		min-height: 1px;
 		float: left;
@@ -48,19 +48,19 @@
 		-webkit-tap-highlight-color: transparent;
 		-webkit-touch-callout: none;
 	}
-	.owl-item img {
+	.th-item img {
 		display: block;
 		width: 100%;
 	}
 
-	.owl-nav.disabled,
-	.owl-dots.disabled {
+	.th-nav.disabled,
+	.th-dots.disabled {
 		display: none;
 	}
 
-	.owl-nav .owl-prev,
-	.owl-nav .owl-next,
-	.owl-dot {
+	.th-nav .th-prev,
+	.th-nav .th-next,
+	.th-dot {
 		cursor: pointer;
 		cursor: hand;
 		-webkit-user-select: none;
@@ -70,45 +70,45 @@
 		user-select: none;
 	}
 
-	&.owl-loaded {
+	&.th-loaded {
 		display: block;
 	}
 
-	&.owl-loading {
+	&.th-loading {
 		opacity: 0;
 		display: block;
 	}
 
-	&.owl-hidden {
+	&.th-hidden {
 		opacity: 0;
 	}
 
-	&.owl-refresh .owl-item {
+	&.th-refresh .th-item {
 		visibility: hidden;
 	}
 
-	&.owl-drag .owl-item {
+	&.th-drag .th-item {
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
 	}
 
-	&.owl-grab {
+	&.th-grab {
 		cursor: move;
 		cursor: grab;
 	}
 
-	&.owl-rtl {
+	&.th-rtl {
 		direction: rtl;
 	}
 
-	&.owl-rtl .owl-item {
+	&.th-rtl .th-item {
 		float: right;
 	}
 }
 
 /* No Js */
-.no-js .owl-carousel {
+.no-js .th-carousel {
 	display: block;
 }

@@ -215,16 +215,16 @@
 		itemElement: 'div',
 		stageElement: 'div',
 
-		refreshClass: 'owl-refresh',
-		loadedClass: 'owl-loaded',
-		loadingClass: 'owl-loading',
-		rtlClass: 'owl-rtl',
-		responsiveClass: 'owl-responsive',
-		dragClass: 'owl-drag',
-		itemClass: 'owl-item',
-		stageClass: 'owl-stage',
-		stageOuterClass: 'owl-stage-outer',
-		grabClass: 'owl-grab'
+		refreshClass: 'th-refresh',
+		loadedClass: 'th-loaded',
+		loadingClass: 'th-loading',
+		rtlClass: 'th-rtl',
+		responsiveClass: 'th-responsive',
+		dragClass: 'th-drag',
+		itemClass: 'th-item',
+		stageClass: 'th-stage',
+		stageOuterClass: 'th-stage-outer',
+		grabClass: 'th-grab'
 	};
 
 	/**
@@ -1247,7 +1247,7 @@
 		if (event !== undefined) {
 			event.stopPropagation();
 
-			// Catch only owl-stage transitionEnd event
+			// Catch only th-stage transitionEnd event
 			if ((event.target || event.srcElement || event.originalTarget) !== this.$stage.get(0)) {
 				return false;
 			}

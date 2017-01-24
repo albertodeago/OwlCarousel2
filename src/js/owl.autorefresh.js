@@ -85,7 +85,7 @@
 
 		this._visible = !this._visible;
 
-		this._core.$element.toggleClass('owl-hidden', !this._visible);
+		this._core.$element.toggleClass('th-hidden', !this._visible);
 
 		this._visible && (this._core.invalidate('width') && this._core.refresh());
 	};

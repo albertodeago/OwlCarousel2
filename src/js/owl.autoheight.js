@@ -57,7 +57,7 @@
 	 */
 	AutoHeight.Defaults = {
 		autoHeight: false,
-		autoHeightClass: 'owl-height'
+		autoHeightClass: 'th-height'
 	};
 
 	/**

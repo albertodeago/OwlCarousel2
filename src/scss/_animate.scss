@@ -1,15 +1,15 @@
 /*
  *  Owl Carousel - Animate Plugin
  */
-.owl-carousel{
+.th-carousel{
 	.animated {
 		animation-duration: 1000ms;
 		animation-fill-mode: both;
 	}
-	.owl-animated-in {
+	.th-animated-in {
 		z-index: 0;
 	}
-	.owl-animated-out {
+	.th-animated-out {
 		z-index: 1;
 	}
 	.fadeOut {

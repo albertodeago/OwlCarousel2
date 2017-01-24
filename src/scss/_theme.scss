@@ -1,12 +1,12 @@
 
-.owl-theme {
+.th-theme {
 	// Styling Next and Prev buttons
-	.owl-nav {
+	.th-nav {
 		margin-top: 10px;
 		text-align: center;
 		-webkit-tap-highlight-color: transparent;
 
-		[class*='owl-'] {
+		[class*='th-'] {
 			color: $nav-color;
 			font-size: $nav-font-size;
 			margin: $nav-margin;
@@ -29,15 +29,15 @@
 	}
 
 	// Styling dots
-	.owl-nav.disabled + .owl-dots {
+	.th-nav.disabled + .th-dots {
 		margin-top: 10px;
 	}
 
-	.owl-dots {
+	.th-dots {
 		text-align: center;
 		-webkit-tap-highlight-color: transparent;
 
-		.owl-dot {
+		.th-dot {
 			display: inline-block;
 			zoom: 1;
 			*display: inline;

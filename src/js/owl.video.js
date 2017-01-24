@@ -53,7 +53,7 @@
 			}, this),
 			'refreshed.owl.carousel': $.proxy(function(e) {
 				if (e.namespace && this._core.is('resizing')) {
-					this._core.$stage.find('.cloned .owl-video-frame').remove();
+					this._core.$stage.find('.cloned .th-video-frame').remove();
 				}
 			}, this),
 			'changed.owl.carousel': $.proxy(function(e) {
@@ -66,7 +66,7 @@
 					return;
 				}
 
-				var $element = $(e.content).find('.owl-video');
+				var $element = $(e.content).find('.th-video');
 
 				if ($element.length) {
 					$element.css('display', 'none');
@@ -81,7 +81,7 @@
 		// register event handlers
 		this._core.$element.on(this._handlers);
 
-		this._core.$element.on('click.owl.video', '.owl-video-play-icon', $.proxy(function(e) {
+		this._core.$element.on('click.owl.video', '.th-video-play-icon', $.proxy(function(e) {
 			this.play(e);
 		}, this));
 	};
@@ -176,23 +176,23 @@
 			lazyClass = '',
 			settings = this._core.settings,
 			create = function(path) {
-				icon = '<div class="owl-video-play-icon"></div>';
+				icon = '<div class="th-video-play-icon"></div>';
 
 				if (settings.lazyLoad) {
-					tnLink = '<div class="owl-video-tn ' + lazyClass + '" ' + srcType + '="' + path + '"></div>';
+					tnLink = '<div class="th-video-tn ' + lazyClass + '" ' + srcType + '="' + path + '"></div>';
 				} else {
-					tnLink = '<div class="owl-video-tn" style="opacity:1;background-image:url(' + path + ')"></div>';
+					tnLink = '<div class="th-video-tn" style="opacity:1;background-image:url(' + path + ')"></div>';
 				}
 				target.after(tnLink);
 				target.after(icon);
 			};
 
-		// wrap video content into owl-video-wrapper div
-		target.wrap('<div class="owl-video-wrapper"' + dimensions + '></div>');
+		// wrap video content into th-video-wrapper div
+		target.wrap('<div class="th-video-wrapper"' + dimensions + '></div>');
 
 		if (this._core.settings.lazyLoad) {
 			srcType = 'data-src';
-			lazyClass = 'owl-lazy';
+			lazyClass = 'th-lazy';
 		}
 
 		// custom thumbnail
@@ -236,8 +236,8 @@
 	 */
 	Video.prototype.stop = function() {
 		this._core.trigger('stop', null, 'video');
-		this._playing.find('.owl-video-frame').remove();
-		this._playing.removeClass('owl-video-playing');
+		this._playing.find('.th-video-frame').remove();
+		this._playing.removeClass('th-video-playing');
 		this._playing = null;
 		this._core.leave('playing');
 		this._core.trigger('stopped', null, 'video');
@@ -269,7 +269,7 @@
 
 		if (video.type === 'youtube') {
 			html = '<iframe width="' + width + '" height="' + height + '" src="//www.youtube.com/embed/' +
-				video.id + '?autoplay=1&v=' + video.id + '" frameborder="0" allowfullscreen></iframe>';
+				video.id + '?autoplay=1&rel=0&v=' + video.id + '" frameborder="0" allowfullscreen></iframe>';
 		} else if (video.type === 'vimeo') {
 			html = '<iframe src="//player.vimeo.com/video/' + video.id +
 				'?autoplay=1" width="' + width + '" height="' + height +
@@ -280,9 +280,9 @@
 				'src="//view.vzaar.com/' + video.id + '/player?autoplay=true"></iframe>';
 		}
 
-		$('<div class="owl-video-frame">' + html + '</div>').insertAfter(item.find('.owl-video'));
+		$('<div class="th-video-frame">' + html + '</div>').insertAfter(item.find('.th-video'));
 
-		this._playing = item.addClass('owl-video-playing');
+		this._playing = item.addClass('th-video-playing');
 	};
 
 	/**
@@ -295,7 +295,7 @@
 		var element = document.fullscreenElement || document.mozFullScreenElement ||
 				document.webkitFullscreenElement;
 
-		return element && $(element).parent().hasClass('owl-video-frame');
+		return element && $(element).parent().hasClass('th-video-frame');
 	};
 
 	/**

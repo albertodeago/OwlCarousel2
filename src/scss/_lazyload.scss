@@ -2,16 +2,15 @@
  * 	Owl Carousel - Lazy Load Plugin
  */
 
-.owl-carousel {
-	.owl-item {
-		.owl-lazy {
+.th-carousel {
+	.th-item {
+		.th-lazy {
 				opacity: 0;
 				transition: opacity 400ms ease;
 		}
 
-		img.owl-lazy {
+		img.th-lazy {
 			transform-style: preserve-3d;
 		}
 	}
 }
-
