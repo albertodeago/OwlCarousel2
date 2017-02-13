@@ -814,10 +814,10 @@
 		$(document).off('.owl.core');
 
 		this.$element.removeClass(this.options.grabClass);
-		if(!this.settings.pinchLocker.lock(this)){
+		if (!this.settings.pinchLocker.lock(this)){
 			return;
 		}
-		this.settings.pinchLocker.unlock(this);
+		window.setTimeout(this.settings.pinchLocker.unlock.bind(this.settings.pinchLocker, this), 200);
 		if (delta.x !== 0 && this.is('dragging') || !this.is('valid')) {
 			this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed);
 			this.current(this.closest(stage.x, delta.x !== 0 ? direction : this._drag.direction));
