@@ -223,6 +223,7 @@
 		responsiveClass: 'th-responsive',
 		dragClass: 'th-drag',
 		itemClass: 'th-item',
+		itemActiveClass: 'th-active',
 		stageClass: 'th-stage',
 		stageOuterClass: 'th-stage-outer',
 		grabClass: 'th-grab',
@@ -437,8 +438,8 @@
 				}
 			}
 
-			this.$stage.children('.active').removeClass('active');
-			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass('active');
+			this.$stage.children('.' + this.options.itemActiveClass).removeClass(this.options.itemActiveClass);
+			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass(this.options.itemActiveClass);
 
 			if (this.settings.center) {
 				this.$stage.children('.center').removeClass('center');
