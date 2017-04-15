@@ -213,6 +213,7 @@
 		info: false,
 
 		nestedItemSelector: false,
+		preloadAutoWidthImages: true,
 		itemElement: 'div',
 		stageElement: 'div',
 		
@@ -464,7 +465,7 @@
 			nestedSelector = this.settings.nestedItemSelector ? '.' + this.settings.nestedItemSelector : undefined;
 			width = this.$element.children(nestedSelector).width();
 
-			if (imgs.length && width <= 0) {
+			if (imgs.length && width <= 0 && this.settings.preloadAutoWidthImages) {
 				this.preloadAutoWidthImages(imgs);
 			}
 		}
